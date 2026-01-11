@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Home</title>
+  <meta name="description" content="Personal homepage: projects, about, and contact." />
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#101826;
+      --text:#e6edf3;
+      --muted:#9fb0c0;
+      --line:rgba(255,255,255,.10);
+      --accent:#7aa2ff;
+      --accent2:#7dffca;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 14px;
+      --max: 980px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 400px at 10% 0%, rgba(122,162,255,.18), transparent 55%),
+        radial-gradient(700px 380px at 100% 0%, rgba(125,255,202,.12), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px;}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:12px 0 18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(122,162,255,.85), rgba(125,255,202,.75));
+      box-shadow: var(--shadow);
+    }
+    nav{display:flex; gap:14px; flex-wrap:wrap}
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:7px 10px;
+      border-radius:10px;
+      border:1px solid transparent;
+    }
+    nav a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.03)}
+    .hero{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:28px;
+      box-shadow: var(--shadow);
+      margin-top:8px;
+    }
+    .kicker{color:var(--muted); margin:0 0 8px; font-weight:600}
+    h1{margin:0 0 8px; font-size:36px; line-height:1.15}
+    .sub{margin:0; color:var(--muted); max-width:70ch}
+    .cta{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+    }
+    .btn:hover{border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.05)}
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(122,162,255,.95), rgba(125,255,202,.65));
+      color:#061018;
+      font-weight:700;
+    }
+    .btn.primary:hover{filter:saturate(1.08) brightness(1.03)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+    .card{
+      grid-column: span 6;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .card h3{margin:0 0 6px; font-size:18px}
+    .card p{margin:0 0 12px; color:var(--muted)}
+    .pillrow{display:flex; gap:8px; flex-wrap:wrap}
+    .pill{
+      font-size:12px;
+      padding:5px 8px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      background: rgba(0,0,0,.14);
+    }
+    section{margin-top:28px}
+    section h2{margin:0 0 10px; font-size:22px}
+    .two{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+    }
+    .box{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .list{margin:0; padding-left:18px; color:var(--muted)}
+    .foot{
+      margin-top:34px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      font-size:14px;
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    @media (max-width: 860px){
+      .card{grid-column: span 12;}
+      .two{grid-template-columns: 1fr;}
+      h1{font-size:30px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Your Name</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="/#projects">Projects</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+        <a href="https://github.com/USERNAME" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <p class="kicker">Simple. Solid. Built to last.</p>
+        <h1>Engineer & builder of practical software.</h1>
+        <p class="sub">
+          I ship projects that do what they’re supposed to do: clear goals, clean code, and documentation you can actually follow.
+          This site is hosted on GitHub Pages and stays intentionally lightweight.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="/#projects">View projects</a>
+          <a class="btn" href="/resume.pdf">Download resume</a>
+          <a class="btn" href="mailto:you@example.com">Email</a>
+        </div>
+      </div>
+
+      <section id="projects">
+        <h2>Featured projects</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Project One</h3>
+            <p>One-sentence description. What it does, who it helps, why it matters.</p>
+            <div class="pillrow">
+              <span class="pill">Rust</span>
+              <span class="pill">CLI</span>
+              <span class="pill">Performance</span>
+            </div>
+            <p style="margin-top:12px">
+              <a class="btn" href="https://github.com/USERNAME/repo-one" target="_blank" rel="noreferrer">Repo</a>
+              <a class="btn" href="/projects/project-one/">Live demo</a>
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Project Two</h3>
+            <p>Another short description. Keep it direct and specific.</p>
+            <div class="pillrow">
+              <span class="pill">Java</span>
+              <span class="pill">Robotics</span>
+              <span class="pill">Control</span>
+            </div>
+            <p style="margin-top:12px">
+              <a class="btn" href="https://github.com/USERNAME/repo-two" target="_blank" rel="noreferrer">Repo</a>
+              <a class="btn" href="/projects/project-two/docs/">Docs</a>
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Project Three</h3>
+            <p>A small tool, a write-up, or a class project you’re proud of.</p>
+            <div class="pillrow">
+              <span class="pill">C++</span>
+              <span class="pill">Graphics</span>
+              <span class="pill">SDL</span>
+            </div>
+            <p style="margin-top:12px">
+              <a class="btn" href="https://github.com/USERNAME/repo-three" target="_blank" rel="noreferrer">Repo</a>
+              <a class="btn" href="/projects/project-three/">Page</a>
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Notes / Blog</h3>
+            <p>Short posts: build logs, lessons learned, and documentation.</p>
+            <div class="pillrow">
+              <span class="pill">Markdown</span>
+              <span class="pill">Docs</span>
+            </div>
+            <p style="margin-top:12px">
+              <a class="btn" href="/posts/">Read posts</a>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>About</h2>
+        <div class="two">
+          <div class="box">
+            <p style="margin:0; color:var(--muted)">
+              Write a short, honest paragraph about what you build and what you care about.
+              Keep it grounded: what you’ve shipped, what you’re learning, what you’re aiming at next.
+            </p>
+            <ul class="list" style="margin-top:12px">
+              <li>Strength: reliable systems and clean structure</li>
+              <li>Focus: performance, robustness, readability</li>
+              <li>Interests: robotics, tooling, engineering math</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3 style="margin:0 0 8px; font-size:18px">Quick info</h3>
+            <p style="margin:0; color:var(--muted)">
+              Location: <span class="mono">Your City</span><br/>
+              Email: <span class="mono">you@example.com</span><br/>
+              GitHub: <span class="mono">@USERNAME</span>
+            </p>
+            <p style="margin:12px 0 0">
+              <a class="btn" href="https://github.com/USERNAME" target="_blank" rel="noreferrer">GitHub profile</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="box">
+          <p style="margin:0; color:var(--muted)">
+            Best way to reach me is email. If you’re writing about a project, include a link and what you want to accomplish.
+          </p>
+          <p style="margin:12px 0 0">
+            <a class="btn primary" href="mailto:you@example.com">you@example.com</a>
+            <a class="btn" href="https://www.linkedin.com/in/YOURHANDLE" target="_blank" rel="noreferrer">LinkedIn</a>
+          </p>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <div>© <span id="year"></span> Your Name</div>
+        <div>Hosted on <span class="mono">GitHub Pages</span></div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
