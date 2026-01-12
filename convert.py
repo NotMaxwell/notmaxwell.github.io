@@ -42,8 +42,30 @@ def markdown_to_html(md_path):
         )
         return result.stdout
     except FileNotFoundError:
-        print("ERROR: pandoc not found. Install with: brew install pandoc")
-        sys.exit(1)
+        # pandoc binary not found — try Python fallback via pypandoc
+        try:
+            import pypandoc
+            try:
+                return pypandoc.convert_file(str(md_path), 'html', format='md')
+            except (OSError, RuntimeError):
+                # Attempt to download pandoc for pypandoc
+                try:
+                    from pypandoc import download_pandoc
+                    print("Pandoc binary missing — downloading pandoc via pypandoc (may take a while)...")
+                    download_pandoc()
+                    return pypandoc.convert_file(str(md_path), 'html', format='md')
+                except Exception as e:
+                    print("ERROR: failed to download or use pandoc via pypandoc:", e)
+                    print("Please install pandoc system-wide: https://pandoc.org/installing.html")
+                    sys.exit(1)
+        except ImportError:
+            # Provide OS-specific install hint
+            if os.name == 'nt':
+                print("ERROR: pandoc not found. On Windows install with Chocolatey: `choco install pandoc` or from https://pandoc.org/installing.html")
+            else:
+                print("ERROR: pandoc not found. Install with your package manager (e.g., `brew install pandoc`) or from https://pandoc.org/installing.html")
+            print("Alternatively, install the Python helper `pypandoc` to enable automatic download: `pip install pypandoc`")
+            sys.exit(1)
     except subprocess.CalledProcessError as e:
         print(f"ERROR converting {md_path}: {e.stderr}")
         return None
@@ -78,7 +100,7 @@ def convert_post(md_path):
     print(f"Converting {md_file}...")
     
     # Read markdown
-    with open(md_path, 'r') as f:
+    with open(md_path, 'r', encoding='utf-8') as f:
         md_content = f.read()
     
     # Extract metadata
@@ -95,7 +117,7 @@ def convert_post(md_path):
     read_time = estimate_read_time(html_content)
     
     # Read template
-    with open(TEMPLATE_PATH, 'r') as f:
+    with open(TEMPLATE_PATH, 'r', encoding='utf-8') as f:
         template = f.read()
     
     # Build final HTML
@@ -111,7 +133,7 @@ def convert_post(md_path):
     )
     
     # Write output
-    with open(html_path, 'w') as f:
+    with open(html_path, 'w', encoding='utf-8') as f:
         f.write(output)
     
     print(f"  ✓ Created {html_filename}")
@@ -147,7 +169,7 @@ def update_blog_index(posts_metadata):
     post_list_html = "\n\n".join(post_links)
     
     # Read current index
-    with open(INDEX_PATH, 'r') as f:
+    with open(INDEX_PATH, 'r', encoding='utf-8') as f:
         index_content = f.read()
     
     # Find and replace the post list section
@@ -158,7 +180,7 @@ def update_blog_index(posts_metadata):
     updated_index = re.sub(pattern, replacement, index_content, flags=re.DOTALL)
     
     # Write updated index
-    with open(INDEX_PATH, 'w') as f:
+    with open(INDEX_PATH, 'w', encoding='utf-8') as f:
         f.write(updated_index)
     
     print(f"\n✓ Updated {INDEX_PATH} with {len(sorted_posts)} post(s)")
