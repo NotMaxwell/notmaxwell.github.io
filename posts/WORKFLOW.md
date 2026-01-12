@@ -1,5 +1,19 @@
 # Blog Workflow
 
+## Local Testing
+
+Before pushing, test your site locally:
+
+```bash
+python3 serve.py
+```
+
+Then open `http://localhost:8000` in your browser.
+
+- Changes to HTML/CSS are reflected instantly
+- No build step needed
+- Press `Ctrl+C` to stop the server
+
 ## Quick Start
 
 Posts are written as Markdown files in `/posts/markdown/` and automatically converted to HTML.
