@@ -1,8 +1,22 @@
 # Blog Workflow
 
+## Local Testing
+
+Before pushing, test your site locally:
+
+```bash
+python3 serve.py
+```
+
+Then open `http://localhost:8000` in your browser.
+
+- Changes to HTML/CSS are reflected instantly
+- No build step needed
+- Press `Ctrl+C` to stop the server
+
 ## Quick Start
 
-Posts are kept as Markdown files in `/posts/markdown/` and converted to HTML for publishing.
+Posts are written as Markdown files in `/posts/markdown/` and automatically converted to HTML.
 
 ### Writing a post
 
@@ -11,7 +25,7 @@ Posts are kept as Markdown files in `/posts/markdown/` and converted to HTML for
    /posts/markdown/2026-01-12-your-post-title.md
    ```
 
-2. **Write in Markdown** (see sample post for reference):
+2. **Write in Markdown**:
    ```markdown
    # Your Post Title
 
@@ -23,98 +37,62 @@ Posts are kept as Markdown files in `/posts/markdown/` and converted to HTML for
 
    - List items
    - Another item
-
-   ## Another section
-
-   More content.
    ```
 
-3. **Convert to HTML** using `pandoc`:
+3. **Convert all markdown to HTML**:
    ```bash
-   pandoc -f markdown -t html \
-     /posts/markdown/2026-01-12-your-post-title.md \
-     -o /posts/converted.html
+   python3 convert.py
    ```
 
-   Then manually copy the HTML content into the template at `/posts/template.html`.
+That's it. The script will:
+- Convert all `.md` files in `/posts/markdown/` to HTML
+- Use your post template automatically
+- Update `/posts/index.html` with links to all posts (newest first)
+- Estimate read time
 
-### Alternative: Simple Python script
+### Watch mode (auto-rebuild)
 
-Create `/convert.py` to batch-convert markdown to HTML:
+For live editing, watch the markdown directory:
 
-```python
-#!/usr/bin/env python3
-import os
-import subprocess
-import re
-
-md_dir = 'posts/markdown'
-posts_dir = 'posts'
-
-for md_file in sorted(os.listdir(md_dir)):
-    if not md_file.endswith('.md'):
-        continue
-    
-    md_path = os.path.join(md_dir, md_file)
-    slug = md_file.replace('.md', '')
-    html_filename = f'{slug}.html'
-    html_path = os.path.join(posts_dir, html_filename)
-    
-    # Convert markdown to HTML
-    result = subprocess.run(
-        ['pandoc', '-f', 'markdown', '-t', 'html', md_path],
-        capture_output=True, text=True
-    )
-    
-    if result.returncode != 0:
-        print(f'Error converting {md_file}')
-        continue
-    
-    # Read template and insert content
-    with open('posts/template.html', 'r') as f:
-        template = f.read()
-    
-    # Extract title from markdown (first h1)
-    title_match = re.search(r'^# (.+)$', result.stdout, re.MULTILINE)
-    title = title_match.group(1) if title_match else 'Post'
-    
-    # Insert converted content and title
-    output = template.replace(
-        '<main class="post-content">',
-        f'<main class="post-content">\n{result.stdout}'
-    ).replace(
-        '<h1>Post Title Goes Here</h1>',
-        f'<h1>{title}</h1>'
-    )
-    
-    # Write to posts directory
-    with open(html_path, 'w') as f:
-        f.write(output)
-    
-    print(f'Created {html_path}')
-```
-
-Run it:
 ```bash
-python3 convert.py
+python3 convert.py --watch
 ```
 
-### Publishing
+Or use the shell wrapper:
 
-1. Edit `/posts/index.html` to add a link to your new post
-2. Commit and push:
-   ```bash
-   git add posts/markdown/ posts/*.html
-   git commit -m "Add new post: your title"
-   git push
-   ```
+```bash
+## Setup (one time)
+
+### 1. Install pandoc
+
+```bash
+brew install pandoc
+```
+
+### 2. (Optional) Install watchdog for watch mode
+
+```bash
+pip install watchdog
+```
+
+## Publishing
+
+After converting posts:
+
+```bash
+git add posts/markdown/ posts/*.html posts/index.html
+git commit -m "Update blog posts"
+git push
+```
 
 ## Structure
 
 ```
 /posts/
-  ├─ index.html           ← Blog listing page
-  ├─ template.html        ← Post template (copy and customize)
+  ├─ index.html           ← Blog listing (auto-updated)
+  ├─ template.html        ← Post template (used for all posts)
+  ├─ convert.py           ← Conversion script
+  ├─ WORKFLOW.md          ← This file
   ├─ 2026-01-12-post-one.html
   ├─ 2026-01-12-post-two.html
   └─ markdown/
@@ -122,18 +100,25 @@ python3 convert.py
      └─ 2026-01-12-post-two.md
 ```
 
-## Install pandoc (one time)
+## Metadata Extraction
 
-If you don't have `pandoc`:
+The conversion script automatically:
 
-```bash
-# macOS
-brew install pandoc
+- **Extracts title** from the first `# Heading` in your markdown
+- **Extracts description** from the first paragraph (used in blog index)
+- **Extracts date** from filename (e.g., `2026-01-12` in `2026-01-12-title.md`)
+- **Estimates read time** based on word count
 
-# Ubuntu/Debian
-sudo apt-get install pandoc
+You don't need to add any frontmatter—just write markdown the normal way.
 
-# Or download from https://pandoc.org/installing.html
-```
+## Tips
 
-That's it. Write markdown, convert to HTML, update the index.
+- Use `# Title` for the main heading
+- Use `## Sections` for subsections
+- Use `### Subsections` for nested headings
+- Use `**bold**` and `_italic_` for emphasis
+- Use `` `code` `` for inline code
+- Use triple backticks for code blocks
+
+That's it. Write your post, run `python3 convert.py`, and you're done.
+
