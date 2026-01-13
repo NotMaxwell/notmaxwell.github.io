@@ -113,6 +113,9 @@ def convert_post(md_path):
     if html_content is None:
         return None
     
+    # Strip the first <h1> from pandoc output since it's already in the header
+    html_content = re.sub(r'^<h1[^>]*>.*?</h1>\s*', '', html_content, flags=re.DOTALL)
+    
     # Estimate read time
     read_time = estimate_read_time(html_content)
     
@@ -127,9 +130,14 @@ def convert_post(md_path):
     ).replace(
         '<p class="post-meta">Jan 12, 2026 · 5 min read</p>',
         f'<p class="post-meta">{formatted_date} · {read_time} min read</p>'
-    ).replace(
-        '<main class="post-content">\n',
-        f'<main class="post-content">\n{html_content}'
+    )
+    
+    # Replace all content between <main class="post-content"> and </main>
+    output = re.sub(
+        r'(<main class="post-content">)\s*.*?(\s*</main>)',
+        f'\\1\n{html_content}\n      \\2',
+        output,
+        flags=re.DOTALL
     )
     
     # Write output
