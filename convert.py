@@ -125,6 +125,9 @@ def convert_post(md_path):
     
     # Build final HTML
     output = template.replace(
+        '<title>Post Title — Your Name</title>',
+        f'<title>{title} — Your Name</title>'
+    ).replace(
         '<h1>Post Title Goes Here</h1>',
         f'<h1>{title}</h1>'
     ).replace(
