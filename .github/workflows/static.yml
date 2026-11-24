@@ -42,6 +42,13 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+      # deploy-pages queries the artifact through the Actions API within a second
+      # of the upload finishing, and that API is eventually consistent: the lookup
+      # intermittently returns "Found 0 artifact(s)" for an artifact that uploaded
+      # fine. A short settle makes the race stop firing.
+      - name: Let the artifact become visible to the API
+        run: sleep 15
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
