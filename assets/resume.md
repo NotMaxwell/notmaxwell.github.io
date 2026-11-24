@@ -9,8 +9,8 @@ Senior at the Alabama School of Cyber Technology and Engineering who builds syst
 embedded software, primarily in Rust. Work spans security automation that makes
 irreversible changes to live systems and therefore has to be correct, ESP32 firmware that
 fuses GPS, IMU and LiDAR into a coordinate, and web applications backed by PostgreSQL.
-Lead programmer, lead tester and driver for both an FRC and an FTC team, and Windows and
-scripting lead for a CyberPatriot team.
+Lead programmer and driver for an FTC team, lead scout and a programmer for an FRC team,
+and Windows and scripting lead for a CyberPatriot team.
 
 ## Education
 
@@ -61,7 +61,8 @@ events. Scouts record matches on wired Chromebooks, the lead scout builds the pi
 the drive team reads the numbers off phones; official results come from the FIRST Events API
 and The Blue Alliance. Built for a venue with no internet — one Linux laptop serves it in
 Docker over a wired network. Rust and axum with Askama templates over SQLite, rendered
-server-side so it works with JavaScript disabled. Primary contributor.
+server-side so it works with JavaScript disabled. Primary contributor, and the lead scout it
+is built for.
 
 **BIOBUZZ** — Robot code for FTC team Knockout Robotics' 2026–2027 season on the FTC SDK:
 turret, launcher, intake, transfer and a PedroPathing drive. Built the tuning suite — a
@@ -88,14 +89,14 @@ Fusion 360.
 
 ## Leadership
 
-**Lead Programmer, Lead Tester and Driver** — FRC team 10101 Critical Hit\
-Own the robot codebase and the scouting tools the team uses to pick alliances, and drive in
-competition. Season robot code in Java on WPILib, including the 2026 REBUILT climb and a
-Commands V3 fuel mechanism.
+**Lead Programmer and Driver** — FTC team Knockout Robotics\
+Own the robot codebase and drive in competition. Subsystem and controls work on the 2026–2027
+BIOBUZZ robot, including the team's PID tuning and characterization procedures.
 
-**Lead Programmer, Lead Tester and Driver** — FTC team Knockout Robotics\
-Subsystem and controls work on the 2026–2027 BIOBUZZ robot, including the team's PID tuning
-and characterization procedures.
+**Lead Scout and Programmer** — FRC team 10101 Critical Hit\
+Run scouting at events — review the forms and build the pick list the drive team picks from —
+and build the application the team uses to do it. Also contribute season robot code in Java on
+WPILib, including the 2026 REBUILT climb and a Commands V3 fuel mechanism.
 
 **Windows and Scripting Lead; Team Lead** — CyberPatriot\
 Handle Windows hardening during rounds and write the scripts and lesson plans used to bring
