@@ -9,8 +9,8 @@ Senior at the Alabama School of Cyber Technology and Engineering who builds syst
 embedded software, primarily in Rust. Work spans security automation that makes
 irreversible changes to live systems and therefore has to be correct, ESP32 firmware that
 fuses GPS, IMU and LiDAR into a coordinate, and web applications backed by PostgreSQL.
-Lead programmer and driver for FRC team 10101, a programmer on FTC team Knockout Robotics,
-and Windows and scripting lead for a CyberPatriot team.
+Lead programmer, lead tester and driver for both an FRC and an FTC team, and Windows and
+scripting lead for a CyberPatriot team.
 
 ## Education
 
@@ -90,10 +90,10 @@ Fusion 360.
 
 **Lead Programmer, Lead Tester and Driver** — FRC team 10101 Critical Hit\
 Own the robot codebase and the scouting tools the team uses to pick alliances, and drive in
-competition. Contribute season robot code in Java on WPILib, including the 2026 REBUILT climb
-and a Commands V3 fuel mechanism.
+competition. Season robot code in Java on WPILib, including the 2026 REBUILT climb and a
+Commands V3 fuel mechanism.
 
-**Programmer** — FTC team Knockout Robotics\
+**Lead Programmer, Lead Tester and Driver** — FTC team Knockout Robotics\
 Subsystem and controls work on the 2026–2027 BIOBUZZ robot, including the team's PID tuning
 and characterization procedures.
 
