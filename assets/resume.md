@@ -9,8 +9,8 @@ Senior at the Alabama School of Cyber Technology and Engineering who builds syst
 embedded software, primarily in Rust. Work spans security automation that makes
 irreversible changes to live systems and therefore has to be correct, ESP32 firmware that
 fuses GPS, IMU and LiDAR into a coordinate, and web applications backed by PostgreSQL.
-Lead programmer and driver for a competitive robotics team, and Windows and scripting lead
-for a CyberPatriot team.
+Lead programmer and driver for FRC team 10101, a programmer on FTC team Knockout Robotics,
+and Windows and scripting lead for a CyberPatriot team.
 
 ## Education
 
@@ -31,8 +31,8 @@ PowerShell, Bash
 **Security.** Windows and Linux hardening, registry and local security policy, `/etc` and
 systemd configuration, scripted remediation, CyberPatriot competition
 
-**Web and data.** Go with Gin, HTMX, server-rendered templates, Bun and Hono, PostgreSQL,
-SQLite, EF Core, Docker, Playwright, REST API integration
+**Web and data.** Rust with axum and Askama, Go with Gin, HTMX, server-rendered templates,
+Bun and Hono, PostgreSQL, SQLite, EF Core, Docker, Playwright, REST API integration
 
 **Tools.** Git, Cargo, CMake, Gradle, Avalonia, wgpu, Fusion 360 CAD, Excel
 
@@ -56,9 +56,18 @@ traits — so the controller mix is the only variable. Default scenario models I
 Decatur and Huntsville, including the two-lane work zone and morning peak. Rendered with
 wgpu.
 
-**TealTeam** — Scouting and analytics web application for robotics team 10101 Critical Hit.
-Go and Gin serving templates with HTMX fragments, PostgreSQL for storage, and sync clients
-for the FIRST and Blue Alliance APIs. Deployed to Render on a Docker runtime.
+**TealTeam** — The scouting and strategy application FRC team 10101 Critical Hit runs at
+events. Scouts record matches on wired Chromebooks, the lead scout builds the pick list, and
+the drive team reads the numbers off phones; official results come from the FIRST Events API
+and The Blue Alliance. Built for a venue with no internet — one Linux laptop serves it in
+Docker over a wired network. Rust and axum with Askama templates over SQLite, rendered
+server-side so it works with JavaScript disabled. Primary contributor.
+
+**BIOBUZZ** — Robot code for FTC team Knockout Robotics' 2026–2027 season on the FTC SDK:
+turret, launcher, intake, transfer and a PedroPathing drive. Built the tuning suite — a
+breakaway ramp, a feedforward sweep fitted by least squares, square-wave step response
+measuring rise, overshoot and settle, sine tracking, and flywheel shot recovery — with gains
+editable live from the dashboard and the procedure documented for the team.
 
 **GoogleDriveAI** — Sorts Google Drive files into class folders using a classifier trained
 on folders already sorted by hand. Documents become text, text becomes a MiniLM embedding,
@@ -79,9 +88,14 @@ Fusion 360.
 
 ## Leadership
 
-**Lead Programmer, Lead Tester and Driver** — Robotics team 10101 Critical Hit\
+**Lead Programmer, Lead Tester and Driver** — FRC team 10101 Critical Hit\
 Own the robot codebase and the scouting tools the team uses to pick alliances, and drive in
-competition.
+competition. Contribute season robot code in Java on WPILib, including the 2026 REBUILT climb
+and a Commands V3 fuel mechanism.
+
+**Programmer** — FTC team Knockout Robotics\
+Subsystem and controls work on the 2026–2027 BIOBUZZ robot, including the team's PID tuning
+and characterization procedures.
 
 **Windows and Scripting Lead; Team Lead** — CyberPatriot\
 Handle Windows hardening during rounds and write the scripts and lesson plans used to bring

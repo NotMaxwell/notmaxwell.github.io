@@ -124,20 +124,22 @@
           </article>
 
           <article class="card">
-            <h3>TealTeam</h3>
+            <h3>TealTeam <span class="tag">Active</span></h3>
             <p>
-              Scouting and analytics web app for robotics team 10101 Critical Hit. Go and Gin behind
-              server-rendered templates with HTMX fragments, PostgreSQL for storage, and sync against
-              the FIRST and Blue Alliance APIs. Deployed on Render under Docker.
+              The scouting and strategy app FRC team 10101 Critical Hit runs at events. Scouts record
+              each match on wired Chromebooks, the lead scout builds the pick list, and the drive team
+              reads the numbers off phones. Built for a venue with no internet: one Linux laptop is the
+              server, in Docker on a wired network. Rust and axum with Askama templates over SQLite,
+              rendered server-side so it still works with JavaScript off.
             </p>
             <div class="pillrow">
-              <span class="pill">Go</span>
-              <span class="pill">HTMX</span>
-              <span class="pill">PostgreSQL</span>
+              <span class="pill">Rust</span>
+              <span class="pill">axum</span>
+              <span class="pill">SQLite</span>
               <span class="pill">Docker</span>
             </div>
             <div class="cardlinks">
-              <a class="btn sm" href="https://github.com/NotMaxwell/TealTeam" target="_blank" rel="noreferrer">Repo</a>
+              <a class="btn sm" href="https://github.com/frc10101/TealTeam" target="_blank" rel="noreferrer">Repo</a>
             </div>
           </article>
 
@@ -201,7 +203,7 @@
             <ul class="list">
               <li><strong>Systems &amp; embedded:</strong> Rust (<span class="mono">no_std</span>, Embassy), C, C++, Zig, ESP32 and RP2040</li>
               <li><strong>Security:</strong> Windows and Linux hardening, scripting, CyberPatriot competition</li>
-              <li><strong>Robotics:</strong> FTC lead programmer, lead tester and driver; scouting and analytics tooling</li>
+              <li><strong>Robotics:</strong> FRC 10101 Critical Hit — lead programmer, lead tester and driver; FTC Knockout Robotics; scouting and strategy tooling</li>
               <li><strong>Web &amp; data:</strong> Go, TypeScript, HTMX, PostgreSQL, SQLite, Python</li>
             </ul>
           </div>
