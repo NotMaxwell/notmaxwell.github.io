@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Local tooling downloads — install pandoc from a package manager instead
+# of committing an installer to the site repo.
+*.msi
+*.exe

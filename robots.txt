@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://notmaxwell.github.io/sitemap.xml

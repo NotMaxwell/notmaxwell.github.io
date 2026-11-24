@@ -7,6 +7,7 @@ Usage:
     python3 convert.py --watch         # Watch for changes and rebuild
 """
 
+import html
 import os
 import sys
 import re
@@ -20,16 +21,32 @@ POSTS_DIR = Path("posts")
 TEMPLATE_PATH = POSTS_DIR / "template.html"
 INDEX_PATH = POSTS_DIR / "index.html"
 
+# Name used in generated <title> tags. Must match posts/template.html.
+SITE_AUTHOR = "Maxwell McCormick"
+
 def extract_metadata(md_content):
     """Extract title and description from markdown."""
     title_match = re.search(r'^# (.+)$', md_content, re.MULTILINE)
     title = title_match.group(1) if title_match else "Untitled"
     
-    # Get first paragraph as description
-    desc_match = re.search(r'^(?!#)(.{0,150})', md_content, re.MULTILINE)
-    description = desc_match.group(1).strip() if desc_match else "Blog post"
-    
-    return title, description.replace('\n', ' ')
+    # First non-empty, non-heading line becomes the excerpt.
+    description = "Blog post"
+    for line in md_content.splitlines():
+        line = line.strip()
+        if line and not line.startswith(('#', '>', '-', '*', '|', '```')):
+            description = strip_markdown(line)
+            if len(description) > 180:
+                description = description[:177].rstrip() + "..."
+            break
+
+    return title, description
+
+
+def strip_markdown(text):
+    """Drop inline markdown so excerpts read as plain prose."""
+    text = re.sub(r'!?\[([^\]]*)\]\([^)]*\)', r'\1', text)  # links and images
+    text = re.sub(r'(\*\*|__|\*|_|`)', '', text)              # emphasis and code
+    return text.strip()
 
 def markdown_to_html(md_path):
     """Convert markdown file to HTML using pandoc."""
@@ -125,14 +142,17 @@ def convert_post(md_path):
     
     # Build final HTML
     output = template.replace(
-        '<title>Post Title — Your Name</title>',
-        f'<title>{title} — Your Name</title>'
+        '<title>Post Title — Maxwell McCormick</title>',
+        f'<title>{title} — {SITE_AUTHOR}</title>'
     ).replace(
         '<h1>Post Title Goes Here</h1>',
-        f'<h1>{title}</h1>'
+        f'<h1>{html.escape(title)}</h1>'
     ).replace(
         '<p class="post-meta">Jan 12, 2026 · 5 min read</p>',
         f'<p class="post-meta">{formatted_date} · {read_time} min read</p>'
+    ).replace(
+        '<meta name="description" content="Post excerpt or summary." />',
+        f'<meta name="description" content="{html.escape(description, quote=True)}" />'
     )
     
     # Replace all content between <main class="post-content"> and </main>
@@ -171,9 +191,9 @@ def update_blog_index(posts_metadata):
     post_links = []
     for post in sorted_posts:
         link = f"""      <article class="post">
-        <h2><a href="/posts/{post['html_filename']}">{post['title']}</a></h2>
+        <h2><a href="/posts/{post['html_filename']}">{html.escape(post['title'])}</a></h2>
         <p class="meta">{post['formatted_date']} · {post['read_time']} min read</p>
-        <p>{post['description']}</p>
+        <p>{html.escape(post['description'])}</p>
       </article>"""
         post_links.append(link)
     
@@ -183,12 +203,18 @@ def update_blog_index(posts_metadata):
     with open(INDEX_PATH, 'r', encoding='utf-8') as f:
         index_content = f.read()
     
-    # Find and replace the post list section
-    # Look for: <article class="post"> ... </article> patterns and replace them
-    pattern = r'(<main>\s*).*?(<p style="margin-top:22px">)'
-    replacement = f'\\1{post_list_html}\n\n      \\2'
-    
-    updated_index = re.sub(pattern, replacement, index_content, flags=re.DOTALL)
+    # Everything between the POSTS markers in posts/index.html is generated.
+    pattern = r'(<!-- POSTS:START.*?-->)\s*.*?\s*(<!-- POSTS:END -->)'
+    if not re.search(pattern, index_content, flags=re.DOTALL):
+        print(f"ERROR: {INDEX_PATH} is missing its POSTS:START / POSTS:END markers.")
+        sys.exit(1)
+
+    updated_index = re.sub(
+        pattern,
+        lambda m: f"{m.group(1)}\n{post_list_html}\n        {m.group(2)}",
+        index_content,
+        flags=re.DOTALL,
+    )
     
     # Write updated index
     with open(INDEX_PATH, 'w', encoding='utf-8') as f:
