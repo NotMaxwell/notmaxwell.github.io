@@ -3,152 +3,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Your Name — Home</title>
-  <meta name="description" content="Personal homepage: projects, about, and contact." />
-  <style>
-    :root{
-      --bg:#0b0f14;
-      --card:#101826;
-      --text:#e6edf3;
-      --muted:#9fb0c0;
-      --line:rgba(255,255,255,.10);
-      --accent:#7aa2ff;
-      --accent2:#7dffca;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 14px;
-      --max: 980px;
-    }
+  <title>Maxwell McCormick — Systems &amp; embedded software</title>
+  <meta name="description" content="Maxwell McCormick builds systems and embedded software, mostly in Rust: security automation, ESP32 firmware, simulation, and scouting tools for robotics." />
+  <meta name="author" content="Maxwell McCormick" />
+  <link rel="canonical" href="https://notmaxwell.github.io/" />
+  <meta name="theme-color" content="#0b0f14" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 400px at 10% 0%, rgba(122,162,255,.18), transparent 55%),
-        radial-gradient(700px 380px at 100% 0%, rgba(125,255,202,.12), transparent 55%),
-        var(--bg);
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px;}
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding:12px 0 18px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px; text-decoration:none;
-      font-weight:700; letter-spacing:.2px;
-    }
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(122,162,255,.85), rgba(125,255,202,.75));
-      box-shadow: var(--shadow);
-    }
-    nav{display:flex; gap:14px; flex-wrap:wrap}
-    nav a{
-      text-decoration:none;
-      color:var(--muted);
-      padding:7px 10px;
-      border-radius:10px;
-      border:1px solid transparent;
-    }
-    nav a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.03)}
-    .hero{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      padding:28px;
-      box-shadow: var(--shadow);
-      margin-top:8px;
-    }
-    .kicker{color:var(--muted); margin:0 0 8px; font-weight:600}
-    h1{margin:0 0 8px; font-size:36px; line-height:1.15}
-    .sub{margin:0; color:var(--muted); max-width:70ch}
-    .cta{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:16px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      text-decoration:none;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color:var(--text);
-    }
-    .btn:hover{border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.05)}
-    .btn.primary{
-      border-color: transparent;
-      background: linear-gradient(135deg, rgba(122,162,255,.95), rgba(125,255,202,.65));
-      color:#061018;
-      font-weight:700;
-    }
-    .btn.primary:hover{filter:saturate(1.08) brightness(1.03)}
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
-      margin-top:18px;
-    }
-    .card{
-      grid-column: span 6;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      padding:16px;
-    }
-    .card h3{margin:0 0 6px; font-size:18px}
-    .card p{margin:0 0 12px; color:var(--muted)}
-    .pillrow{display:flex; gap:8px; flex-wrap:wrap}
-    .pill{
-      font-size:12px;
-      padding:5px 8px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      color:var(--muted);
-      background: rgba(0,0,0,.14);
-    }
-    section{margin-top:28px}
-    section h2{margin:0 0 10px; font-size:22px}
-    .two{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-    }
-    .box{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      padding:16px;
-    }
-    .list{margin:0; padding-left:18px; color:var(--muted)}
-    .foot{
-      margin-top:34px;
-      padding-top:16px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      font-size:14px;
-    }
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
-    @media (max-width: 860px){
-      .card{grid-column: span 12;}
-      .two{grid-template-columns: 1fr;}
-      h1{font-size:30px}
-    }
-  </style>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Maxwell McCormick — Systems &amp; embedded software" />
+  <meta property="og:description" content="Systems and embedded software, mostly in Rust: security automation, ESP32 firmware, simulation, and robotics tooling." />
+  <meta property="og:url" content="https://notmaxwell.github.io/" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="stylesheet" href="/assets/css/site.css" />
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <div class="wrap">
     <header class="topbar">
       <a class="brand" href="/">
         <span class="logo" aria-hidden="true"></span>
-        <span>Your Name</span>
+        <span>Maxwell McCormick</span>
       </a>
       <nav aria-label="Primary">
-        <a href="/#projects">Projects</a>
+        <a href="/projects/">Projects</a>
         <a href="/posts/">Blog</a>
         <a href="/#about">About</a>
         <a href="/#contact">Contact</a>
@@ -156,123 +35,221 @@
       </nav>
     </header>
 
-    <main>
+    <main id="main">
       <div class="hero">
-        <p class="kicker">Simple. Solid. Built to last.</p>
-        <h1>Engineer & builder of practical software.</h1>
+        <p class="kicker">Decatur, Alabama</p>
+        <h1>I build systems software that has to actually hold up.</h1>
         <p class="sub">
-          I ship projects that do what they’re supposed to do: clear goals, clean code, and documentation you can actually follow.
-          This site is hosted on GitHub Pages and stays intentionally lightweight.
+          Senior at the Alabama School of Cyber Technology and Engineering, writing mostly Rust:
+          security automation that makes irreversible changes and therefore has to be right,
+          firmware that fuses three sensors into a coordinate, and simulations that compare two
+          controllers on identical inputs.
+        </p>
+        <p class="sub">
+          Lead programmer and driver for my FTC robotics team, and team lead for Windows and
+          scripting on my CyberPatriot team. Most of what I build starts as a problem I hit myself.
         </p>
         <div class="cta">
-          <a class="btn primary" href="/#projects">View projects</a>
-          <a class="btn" href="/Resume (1).docx">Download resume</a>
-          <a class="btn" href="mailto:you@example.com">Email</a>
+          <a class="btn primary" href="#projects">View projects</a>
+          <a class="btn" href="/assets/resume.docx">Resume (.docx)</a>
+          <a class="btn" href="mailto:william.max.mccormick@gmail.com">Email me</a>
+          <a class="btn" href="https://github.com/NotMaxwell" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </div>
 
       <section id="projects">
-        <h2>Featured projects</h2>
+        <div class="section-head">
+          <h2>Selected projects</h2>
+          <p class="section-note"><a href="/projects/">Full list →</a></p>
+        </div>
+
         <div class="grid">
-          <article class="card">
-            <h3>PinnacleScouting</h3>
-            <p>Scan websites like Blue Alliance to quickly gather scoring information about teams in your qualifier.</p>
-            <div class="pillrow">
-              <span class="pill">C#</span>
-              <span class="pill">Scouting</span>
-              <span class="pill">Robotics</span>
-            </div>
-            <p style="margin-top:12px">
-              <a class="btn" href="https://github.com/NotMaxwell/PinnacleScouting" target="_blank" rel="noreferrer">Repo</a>
+          <article class="card wide">
+            <h3>PinnacleCyPat <span class="tag">Active</span></h3>
+            <p>
+              Automated security hardening for CyberPatriot competition images, on both Windows and
+              Linux. It reads the round's own README, applies the mechanical part of the checklist,
+              and reports exactly what it changed. Because the changes are largely irreversible —
+              deleted accounts, rewritten registry and security policy, uninstalled software — it
+              ships with a dry-run mode and 726 tests. Desktop GUI on top of the CLI.
             </p>
+            <div class="pillrow">
+              <span class="pill">Rust 2024</span>
+              <span class="pill">Windows + Linux</span>
+              <span class="pill">Cybersecurity</span>
+              <span class="pill">726 tests</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/CyberPatriotAutomation" target="_blank" rel="noreferrer">Repo</a>
+            </div>
           </article>
 
           <article class="card">
-            <h3>Pong</h3>
-            <p>Pong Clone for Hack Club.</p>
-            <div class="pillrow">
-              <span class="pill">C</span>
-              <span class="pill">Games</span>
-              <span class="pill">Graphics</span>
-            </div>
-            <p style="margin-top:12px">
-              <a class="btn" href="https://github.com/NotMaxwell/Pong" target="_blank" rel="noreferrer">Repo</a>
+            <h3>PING <span class="tag">Capstone</span></h3>
+            <p>
+              Aim the device at something, press the button, and it reports that thing's GPS
+              coordinate. An ESP32-S3 combines a NEO-M9N GPS for its own position, a BNO085 IMU for
+              bearing and elevation, and a TF03 LiDAR for range, then walks that range out along the
+              WGS-84 ellipsoid. Main firmware is <span class="mono">no_std</span> Rust on esp-hal and
+              Embassy; a C++23 port exists to isolate sensor dropouts to hardware or code.
             </p>
+            <div class="pillrow">
+              <span class="pill">Rust no_std</span>
+              <span class="pill">Embassy</span>
+              <span class="pill">ESP32-S3</span>
+              <span class="pill">Sensor fusion</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/PINGCapstone" target="_blank" rel="noreferrer">Repo</a>
+            </div>
           </article>
 
           <article class="card">
-            <h3>WAFFLEplus</h3>
-            <p>Competition Scripts for robotics competitions.</p>
-            <div class="pillrow">
-              <span class="pill">PowerShell</span>
-              <span class="pill">Automation</span>
-              <span class="pill">Scripts</span>
-            </div>
-            <p style="margin-top:12px">
-              <a class="btn" href="https://github.com/Traceback6/WAFFLEplus" target="_blank" rel="noreferrer">Repo</a>
+            <h3>Highway Traffic Simulator</h3>
+            <p>
+              A native Rust desktop app that runs human drivers and autonomous control side by side
+              on identical inputs — same seed, same arrivals, same driver traits, same events — so
+              the only difference between the two panes is the controller mix. The default scenario
+              is I-565 from Decatur to Huntsville, with the real exits, the two-lane work zone, and
+              the morning peak toward Redstone Arsenal.
             </p>
+            <div class="pillrow">
+              <span class="pill">Rust</span>
+              <span class="pill">wgpu</span>
+              <span class="pill">Simulation</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/TrafficSim" target="_blank" rel="noreferrer">Repo</a>
+            </div>
           </article>
 
           <article class="card">
-            <h3>notmaxwell.github.io</h3>
-            <p></p>
-            <div class="pillrow">
-              <span class="pill">HTML</span>
-              <span class="pill">Website</span>
-            </div>
-            <p style="margin-top:12px">
-              <a class="btn" href="/posts/">Read posts</a>
+            <h3>TealTeam</h3>
+            <p>
+              Scouting and analytics web app for robotics team 10101 Critical Hit. Go and Gin behind
+              server-rendered templates with HTMX fragments, PostgreSQL for storage, and sync against
+              the FIRST and Blue Alliance APIs. Deployed on Render under Docker.
             </p>
+            <div class="pillrow">
+              <span class="pill">Go</span>
+              <span class="pill">HTMX</span>
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">Docker</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/TealTeam" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>GoogleDriveAI</h3>
+            <p>
+              Sorts Google Drive files into class folders using a small neural net trained on the
+              folders already sorted by hand. Files become text, text becomes a MiniLM embedding, and
+              a 384 → 128 → classes MLP predicts the folder. Anything below the confidence threshold
+              is left alone rather than guessed at.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Python</span>
+              <span class="pill">Embeddings</span>
+              <span class="pill">Drive API</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/GoogleDriveAI" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>CHEmailBot</h3>
+            <p>
+              Outreach to Huntsville-area technology companies from the Chamber of Commerce
+              directory, with a human review step before anything sends and a database-enforced
+              guarantee that no company is contacted twice in a campaign. Bun, Hono and SQLite, with
+              Playwright driving the directory's contact forms and the Gmail API for email.
+            </p>
+            <div class="pillrow">
+              <span class="pill">TypeScript</span>
+              <span class="pill">Bun + Hono</span>
+              <span class="pill">SQLite</span>
+              <span class="pill">Playwright</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/CHEmailBot" target="_blank" rel="noreferrer">Repo</a>
+            </div>
           </article>
         </div>
       </section>
 
       <section id="about">
-        <h2>About</h2>
+        <div class="section-head">
+          <h2>About</h2>
+        </div>
         <div class="two">
           <div class="box">
-            <p style="margin:0; color:var(--muted)">
-              Write a short, honest paragraph about what you build and what you care about.
-              Keep it grounded: what you’ve shipped, what you’re learning, what you’re aiming at next.
+            <p>
+              I'm a senior at the Alabama School of Cyber Technology and Engineering in Huntsville,
+              class of 2027. Most of my work sits close to the machine: embedded firmware, security
+              tooling, and simulation, written in Rust when I get the choice and in C, C++, Zig, Go,
+              C# or Python when the platform makes that call for me.
             </p>
-            <ul class="list" style="margin-top:12px">
-              <li>Strength: reliable systems and clean structure</li>
-              <li>Focus: performance, robustness, readability</li>
-              <li>Interests: robotics, tooling, engineering math</li>
+            <p>
+              The common thread is projects where being approximately correct isn't good enough — a
+              hardening tool that deletes accounts, a device that has to report the right coordinate,
+              a controller comparison that's only meaningful if both sides get identical inputs. That
+              constraint is the part I find interesting.
+            </p>
+            <ul class="list">
+              <li><strong>Systems &amp; embedded:</strong> Rust (<span class="mono">no_std</span>, Embassy), C, C++, Zig, ESP32 and RP2040</li>
+              <li><strong>Security:</strong> Windows and Linux hardening, scripting, CyberPatriot competition</li>
+              <li><strong>Robotics:</strong> FTC lead programmer, lead tester and driver; scouting and analytics tooling</li>
+              <li><strong>Web &amp; data:</strong> Go, TypeScript, HTMX, PostgreSQL, SQLite, Python</li>
             </ul>
           </div>
           <div class="box">
-            <h3 style="margin:0 0 8px; font-size:18px">Quick info</h3>
-            <p style="margin:0; color:var(--muted)">
-              Location: <span class="mono">Your City</span><br/>
-              Email: <span class="mono">you@example.com</span><br/>
-              GitHub: <span class="mono">@USERNAME</span>
-            </p>
-            <p style="margin:12px 0 0">
-              <a class="btn" href="https://github.com/NotMaxwell" target="_blank" rel="noreferrer">GitHub profile</a>
-            </p>
+            <h3>Quick info</h3>
+            <dl class="kv">
+              <dt>Location</dt>
+              <dd>Decatur, Alabama</dd>
+              <dt>School</dt>
+              <dd>ASCTE, Huntsville</dd>
+              <dt>Email</dt>
+              <dd class="mono" style="word-break:break-all">william.max.mccormick@gmail.com</dd>
+              <dt>GitHub</dt>
+              <dd class="mono">@NotMaxwell</dd>
+            </dl>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell" target="_blank" rel="noreferrer">GitHub profile</a>
+              <a class="btn sm" href="/assets/resume.docx">Resume</a>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="contact">
-        <h2>Contact</h2>
+        <div class="section-head">
+          <h2>Contact</h2>
+        </div>
         <div class="box">
-          <p style="margin:0; color:var(--muted)">
-            Best way to reach me is email. If you’re writing about a project, include a link and what you want to accomplish.
+          <p>
+            Email is the best way to reach me. If you're writing about a project, include a link and
+            what you're trying to accomplish — that's usually enough for me to be useful in the first
+            reply.
           </p>
-          <p style="margin:12px 0 0">
-            <a class="btn primary" href="mailto:you@example.com">you@example.com</a>
-            <a class="btn" href="https://www.linkedin.com/in/YOURHANDLE" target="_blank" rel="noreferrer">LinkedIn</a>
-          </p>
+          <div class="cardlinks">
+            <a class="btn primary" href="mailto:william.max.mccormick@gmail.com">william.max.mccormick@gmail.com</a>
+            <a class="btn" href="https://github.com/NotMaxwell" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
         </div>
       </section>
-
-      <footer class="foot">
-        <div>© <span id="year"></span> Your Name</div>
-        <div>Hosted on <span class="mono">GitHub Pages</span></div>
-      </footer>
     </main>
+
+    <footer class="foot">
+      <div>© <span id="year">2026</span> Maxwell McCormick</div>
+      <div>
+        <a href="https://github.com/NotMaxwell/notmaxwell.github.io" target="_blank" rel="noreferrer">Source</a>
+        · Hosted on <span class="mono">GitHub Pages</span>
+      </div>
+    </footer>
   </div>
 
   <script>

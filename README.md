@@ -1,56 +1,97 @@
 # notmaxwell.github.io
 
-Personal website & blog. Static HTML + CSS hosted on GitHub Pages.
+Personal website and blog for Maxwell McCormick. Hand-written static HTML + CSS,
+hosted on GitHub Pages. No framework, no build step, no dependencies to keep alive.
+
+Live at <https://notmaxwell.github.io/>.
 
 ## Quick commands
 
 ### Local testing
 
 ```bash
-python3 serve.py        # Start at localhost:8000
+python3 serve.py        # Serves the site at http://localhost:8000
 ```
 
-Then open `http://localhost:8000` in your browser. Changes to files are reflected immediately.
+Changes to files show up on reload — no restart needed.
 
 ### Convert markdown posts to HTML
 
 ```bash
-python3 convert.py      # Convert all posts
+python3 convert.py          # Convert all posts
 python3 convert.py --watch  # Auto-rebuild on save
 ```
 
-See [posts/WORKFLOW.md](posts/WORKFLOW.md) for details.
+Requires `pandoc` on `PATH` (`brew install pandoc`, or `choco install pandoc` on
+Windows). See [posts/WORKFLOW.md](posts/WORKFLOW.md) for the post-writing flow.
+
+### Rebuild the resume
+
+`assets/resume.md` is the source of truth; the `.docx` the site links is generated:
+
+```bash
+pandoc assets/resume.md -o assets/resume.docx --standalone
+```
+
+Edit the markdown, regenerate, and commit both.
 
 ## File structure
 
 ```
 /
-├─ index.html           ← Main homepage
+├─ index.html           ← Homepage
+├─ projects/index.html  ← Full project list
+├─ robots.txt           ← Crawler rules
+├─ sitemap.xml          ← Update when adding a page or post
 ├─ serve.py             ← Local dev server
 ├─ convert.py           ← Markdown → HTML converter
 ├─ .nojekyll            ← Disables Jekyll
 ├─ assets/
-│  └─ css/
-│     └─ site.css       ← Shared theme
-├─ posts/
-│  ├─ index.html        ← Blog listing
-│  ├─ template.html     ← Post template
-│  ├─ WORKFLOW.md       ← Blog instructions
-│  └─ markdown/
-│     └─ 2026-01-12-*.md
-└─ projects/
-   └─ index.html        ← Projects listing
+│  ├─ favicon.svg
+│  ├─ resume.md         ← Resume source
+│  ├─ resume.docx       ← Generated from resume.md by pandoc
+│  └─ css/site.css      ← Shared theme; every page links this
+└─ posts/
+   ├─ index.html        ← Blog listing (generated between the POSTS markers)
+   ├─ template.html     ← Post template
+   ├─ WORKFLOW.md       ← Blog instructions
+   └─ markdown/         ← Post sources
 ```
 
-## Workflow
+### Conventions
 
-1. Make changes locally
-2. Test with `python3 serve.py`
-3. For blog posts: write `.md` in `posts/markdown/`, then `python3 convert.py`
-4. Commit and push: `git add . && git commit -m "message" && git push`
+- **One stylesheet.** `assets/css/site.css` holds everything shared. Page-specific
+  rules go in a `<style>` block after the `<link>` tag — never copy the theme into a page.
+- **Generated regions are marked.** `convert.py` owns the block between
+  `<!-- POSTS:START -->` and `<!-- POSTS:END -->` in `posts/index.html`, and the
+  title, meta description, `<h1>`, post-meta line and `<main class="post-content">`
+  body of each generated post. Edit the markdown, not the generated HTML.
+- The name shown in generated post titles lives in one place: `SITE_AUTHOR` in
+  `convert.py`, which must match `posts/template.html`.
+- **`assets/resume.docx` is generated.** Edit `assets/resume.md`, never the `.docx`.
 
 ## Deployment
 
-GitHub Pages automatically deploys from the `main` branch root directory.
+GitHub Pages builds this site with the Actions workflow in
+[.github/workflows/static.yml](.github/workflows/static.yml), which runs **only on
+pushes to the `production` branch**. Pushing to `main` does *not* publish anything.
 
-No build step needed—just plain HTML + CSS.
+Day-to-day flow:
+
+```bash
+# 1. Work on main
+git add . && git commit -m "message" && git push origin main
+
+# 2. Check it locally
+python3 serve.py
+
+# 3. Publish when you're happy with it
+git checkout production
+git merge main
+git push origin production      # ← this is what triggers the deploy
+git checkout main
+```
+
+You can also publish without a merge by running the workflow by hand from the
+repository's **Actions** tab (it allows `workflow_dispatch`), but it still builds
+from `production`, so the branch has to be up to date first.

@@ -3,37 +3,460 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Projects — Your Name</title>
+  <title>Projects — Maxwell McCormick</title>
+  <meta name="description" content="Projects by Maxwell McCormick: security automation, ESP32 firmware, traffic simulation, robotics scouting tools, and command-line utilities in Rust, C++, Zig, Go and Python." />
+  <link rel="canonical" href="https://notmaxwell.github.io/projects/" />
+  <meta name="theme-color" content="#0b0f14" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:36px;color:#0b0f14}
-    a{color:#1558d6}
-    .card{border:1px solid #e6e6e6;padding:16px;border-radius:10px;margin:12px 0}
-    header{margin-bottom:18px}
+    /* The compact list used for smaller projects at the bottom of the page. */
+    .minor{list-style:none; margin:0; padding:0; display:grid;
+           grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:10px}
+    .minor li{border:1px solid var(--line); background:var(--surface);
+              border-radius:var(--radius-sm); padding:12px 14px}
+    .minor a{font-weight:600; text-decoration:none}
+    .minor a:hover{color:var(--accent)}
+    .minor p{margin:4px 0 0; color:var(--muted); font-size:14px}
+    .minor .lang{font-family:var(--mono); font-size:11px; color:var(--faint);
+                 text-transform:uppercase; letter-spacing:.06em}
   </style>
 </head>
 <body>
-  <header>
-    <a href="/">← Home</a>
-    <h1>Projects</h1>
-    <p>Links to project pages and demos. Each project lives under <code>/projects/</code>.</p>
-  </header>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Maxwell McCormick</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="/projects/" aria-current="page">Projects</a>
+        <a href="/posts/">Blog</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+        <a href="https://github.com/NotMaxwell" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
 
-  <main>
-    <section class="card">
-      <h2><a href="/projects/project-one/">Project One</a></h2>
-      <p>Short description. Demo: <a href="/projects/project-one/">/projects/project-one/</a></p>
-    </section>
+    <main id="main">
+      <div class="hero">
+        <p class="kicker">Projects</p>
+        <h1>What I've built, grouped by what it does.</h1>
+        <p class="sub">
+          Security automation, embedded firmware, simulation, and the tools I wrote because I needed
+          them. Everything here is public — the repo link on each one is the real source, not a demo
+          page.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/NotMaxwell?tab=repositories" target="_blank" rel="noreferrer">All repositories</a>
+          <a class="btn" href="/">← Home</a>
+        </div>
+      </div>
 
-    <section class="card">
-      <h2><a href="/projects/project-two/">Project Two</a></h2>
-      <p>Short description. Docs: <a href="/projects/project-two/docs/">/projects/project-two/docs/</a></p>
-    </section>
+      <section id="security">
+        <div class="section-head">
+          <h2>Security &amp; automation</h2>
+          <p class="section-note">CyberPatriot and network tooling</p>
+        </div>
+        <div class="grid">
+          <article class="card wide">
+            <h3>PinnacleCyPat <span class="tag">Active</span></h3>
+            <p>
+              Automated security hardening for CyberPatriot competition images, on both Windows and
+              Linux. It reads the round's own README, applies the mechanical part of the checklist,
+              and reports exactly what it changed. The changes are largely irreversible — deleted
+              files and user accounts, changed passwords, disabled services, a rewritten registry and
+              security policy, uninstalled software — so it ships with a dry-run mode, a desktop GUI
+              over the CLI, and 726 tests.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Rust 2024</span>
+              <span class="pill">Windows + Linux</span>
+              <span class="pill">PowerShell</span>
+              <span class="pill">Apache-2.0</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/CyberPatriotAutomation" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
 
-    <section class="card">
-      <h2><a href="/projects/project-three/">Project Three</a></h2>
-      <p>Short description. Page: <a href="/projects/project-three/">/projects/project-three/</a></p>
-    </section>
+          <article class="card">
+            <h3>CyberPatriot 2027</h3>
+            <p>
+              Scripts and resources for the 2027 CyberPatriot season — Windows and Linux hardening
+              scripts plus the lesson plans I use to bring new team members up to speed. I'm the
+              Windows and scripting lead on the team.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Zig</span>
+              <span class="pill">Shell</span>
+              <span class="pill">Team resources</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/CyberPatriot2027" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
 
-  </main>
+          <article class="card">
+            <h3>PinnacleFinder</h3>
+            <p>
+              Locates a device on a network from its MAC address, resolving it to a physical position
+              rather than just an IP. Written in Rust.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Rust</span>
+              <span class="pill">Networking</span>
+              <span class="pill">Geolocation</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/PinnacleFinderMacAddress" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="embedded">
+        <div class="section-head">
+          <h2>Embedded &amp; control</h2>
+          <p class="section-note">Firmware on real hardware</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>PING <span class="tag">Capstone</span></h3>
+            <p>
+              Aim the device at something, press the button, and it reports that thing's GPS
+              coordinate. An ESP32-S3 reads a NEO-M9N GPS for its own position, a BNO085 IMU for
+              bearing and elevation, and a TF03 LiDAR for distance, then walks the range out from its
+              own position along that direction on the WGS-84 ellipsoid. Results go to USB serial and
+              a 128×64 OLED.
+            </p>
+            <p>
+              The repo holds three firmwares: the <span class="mono">no_std</span> Rust one that runs
+              on the hardware (esp-hal + Embassy), a C++23 ESP-IDF port written to determine whether
+              sensor dropouts were hardware or code, and an unfinished Zig port. ASCTE class of 2027
+              group capstone.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Rust no_std</span>
+              <span class="pill">Embassy</span>
+              <span class="pill">C++23 / ESP-IDF</span>
+              <span class="pill">Zig</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/PINGCapstone" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>PID Cart Controller</h3>
+            <p>
+              Async Rust firmware for a cart-and-rail control lab on a Raspberry Pi Pico (RP2040),
+              using the Embassy framework. The lab ships MicroPython; this reimplements the same
+              loop — read a setpoint potentiometer, measure actual cart position, run the PID, drive
+              the servo command — against the handout's exact formulas, with a C++ version alongside.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Rust</span>
+              <span class="pill">Embassy</span>
+              <span class="pill">RP2040</span>
+              <span class="pill">PID control</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/PIDCartControllerRust" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="systems">
+        <div class="section-head">
+          <h2>Simulation &amp; systems tools</h2>
+          <p class="section-note">Native applications and command-line utilities</p>
+        </div>
+        <div class="grid">
+          <article class="card wide">
+            <h3>Highway Traffic Simulator</h3>
+            <p>
+              A native Rust desktop app that simulates a highway between two cities in both
+              directions and runs human-driver mode and autonomous mode side by side on identical
+              inputs: same seed, same arrivals, same driver traits, same events. The only difference
+              between the two panes is the controller mix, which is what makes the comparison mean
+              anything.
+            </p>
+            <p>
+              The default scenario mirrors I-565 from I-65 at Decatur to US 72 in Huntsville: real
+              exits and mileposts, the two-lane work zone between County Line Rd and Wall-Triana, the
+              65 mph section east of Memorial Parkway, and a morning peak toward Redstone Arsenal and
+              Research Park. Rendered with wgpu; design and deviation notes are in the repo.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Rust</span>
+              <span class="pill">wgpu</span>
+              <span class="pill">Simulation</span>
+              <span class="pill">Design docs</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/TrafficSim" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>PinnacleSort</h3>
+            <p>
+              Walks a user's directories to find unused and junk files, built to solve a problem I
+              actually had: old VMs and photos quietly eating a disk. Sorts by type, content, and
+              access date.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Rust</span>
+              <span class="pill">Filesystem</span>
+              <span class="pill">CLI</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/PinnacleSort" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>CodeBreak</h3>
+            <p>
+              A C++ cipher-cracking exercise, including an Enigma cracker. CMake build, written to
+              understand how the attacks work rather than to use someone else's implementation.
+            </p>
+            <div class="pillrow">
+              <span class="pill">C++</span>
+              <span class="pill">CMake</span>
+              <span class="pill">Cryptanalysis</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/CodeBreak" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Morse Code Translator</h3>
+            <p>
+              Morse translation implemented twice — once in Rust with a test suite and pinned
+              toolchain, once in C++ — so the two implementations can be compared directly.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Rust</span>
+              <span class="pill">C++</span>
+              <span class="pill">Tests</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/MorseCodeTranslator" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="web">
+        <div class="section-head">
+          <h2>Web &amp; services</h2>
+          <p class="section-note">Things with a database behind them</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>TealTeam</h3>
+            <p>
+              Scouting and analytics web app for robotics team 10101 Critical Hit. Go and Gin serving
+              <span class="mono">html/template</span> pages with HTMX fragments, PostgreSQL for
+              storage, Tailwind and TypeScript for the front end, and sync clients for the FIRST and
+              Blue Alliance APIs. Deployed to Render on a Docker runtime.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Go</span>
+              <span class="pill">HTMX</span>
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">Docker</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/TealTeam" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>CHEmailBot</h3>
+            <p>
+              Outreach to Huntsville-area technology companies from the Huntsville/Madison County
+              Chamber directory. The directory publishes no email addresses, only a relayed contact
+              form, so the tool works in two stages — with a review step before anything goes out and
+              a database constraint guaranteeing no company is contacted twice in a campaign.
+            </p>
+            <div class="pillrow">
+              <span class="pill">TypeScript</span>
+              <span class="pill">Bun + Hono</span>
+              <span class="pill">SQLite</span>
+              <span class="pill">Playwright</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/CHEmailBot" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>GoogleDriveAI</h3>
+            <p>
+              Sorts Google Drive files into class folders with a small neural net trained on the
+              folders already sorted by hand. Docs, Slides, Sheets, PDFs and .docx become text; text
+              becomes a 384-number MiniLM embedding; a 384 → 128 → classes MLP predicts the folder.
+              Training holds out 20% of each class to report honest accuracy, and anything under the
+              confidence threshold is left for a human.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Python</span>
+              <span class="pill">Embeddings</span>
+              <span class="pill">PyTorch</span>
+              <span class="pill">Drive API</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/GoogleDriveAI" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>This site</h3>
+            <p>
+              Hand-written static HTML and CSS on GitHub Pages, with a small Python script that
+              converts markdown posts to HTML through pandoc and rebuilds the blog index. No build
+              step, no framework, no dependencies to keep alive.
+            </p>
+            <div class="pillrow">
+              <span class="pill">HTML + CSS</span>
+              <span class="pill">Python</span>
+              <span class="pill">GitHub Pages</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/notmaxwell.github.io" target="_blank" rel="noreferrer">Repo</a>
+              <a class="btn sm" href="/posts/">Posts</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="robotics">
+        <div class="section-head">
+          <h2>Robotics</h2>
+          <p class="section-note">FTC — lead programmer, lead tester and driver</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>PinnacleScouting</h3>
+            <p>
+              Desktop scouting app that scrapes sites like Blue Alliance to gather scoring data on
+              the teams in a qualifier, then filters, aggregates and ranks them by whichever metric
+              matters. Avalonia UI over a core library, with SQLite and EF Core for persistence and a
+              scraper interface so each site gets its own implementation.
+            </p>
+            <div class="pillrow">
+              <span class="pill">C#</span>
+              <span class="pill">Avalonia</span>
+              <span class="pill">EF Core</span>
+              <span class="pill">SQLite</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/PinnacleScouting" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>DECODE robot code</h3>
+            <p>
+              FTC robot code for the DECODE season — a Gradle and WPILib workspace used for alpha
+              testing, written in Java. The competition-side counterpart to the scouting tools above.
+            </p>
+            <div class="pillrow">
+              <span class="pill">Java</span>
+              <span class="pill">FTC</span>
+              <span class="pill">Gradle</span>
+            </div>
+            <div class="cardlinks">
+              <a class="btn sm" href="https://github.com/NotMaxwell/DecodeAlphaTestingGCC" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="smaller">
+        <div class="section-head">
+          <h2>Smaller projects &amp; language practice</h2>
+          <p class="section-note">Short builds, often an excuse to learn a language</p>
+        </div>
+        <ul class="minor">
+          <li>
+            <a href="https://github.com/NotMaxwell/SudokuSolver" target="_blank" rel="noreferrer">SudokuSolver</a>
+            <span class="lang">Zig</span>
+            <p>Constraint-propagating sudoku solver.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/Hyprland-Presets" target="_blank" rel="noreferrer">Hyprland-Presets</a>
+            <span class="lang">Zig</span>
+            <p>Configuration presets for the Hyprland compositor.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/Pong" target="_blank" rel="noreferrer">Pong</a>
+            <span class="lang">C</span>
+            <p>Pong clone written in C for Hack Club.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/PhysicsJavaGameJavaFX" target="_blank" rel="noreferrer">Physics game</a>
+            <span class="lang">Java / JavaFX</span>
+            <p>Physics-driven game built on JavaFX.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/CookieClickerBot" target="_blank" rel="noreferrer">CookieClickerBot</a>
+            <span class="lang">C#</span>
+            <p>Plays Cookie Clicker on its own in an open browser window.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/KaryokeType" target="_blank" rel="noreferrer">KaryokeType</a>
+            <span class="lang">Go</span>
+            <p>Typing practice against song lyrics, served from Go templates.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/Pinnacle_Weather" target="_blank" rel="noreferrer">Pinnacle_Weather</a>
+            <span class="lang">Rust</span>
+            <p>Command-line weather app.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/RainWaterPerDayCalculator" target="_blank" rel="noreferrer">Rainwater calculator</a>
+            <span class="lang">Rust</span>
+            <p>Works out collectable rainwater per day for a given area.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/Pinnacle_Data" target="_blank" rel="noreferrer">Pinnacle_Data</a>
+            <span class="lang">Swift</span>
+            <p>iOS app that pulls what information it can off an iPhone.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/Pinnacle_Calc" target="_blank" rel="noreferrer">Pinnacle_Calc</a>
+            <span class="lang">Swift</span>
+            <p>Calculator app, with unit and UI test targets.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/FileFinder" target="_blank" rel="noreferrer">FileFinder</a>
+            <span class="lang">C++</span>
+            <p>Finds files across a system by name, extension, size or contents.</p>
+          </li>
+          <li>
+            <a href="https://github.com/NotMaxwell/ZigExercises" target="_blank" rel="noreferrer">ZigExercises</a>
+            <span class="lang">Zig</span>
+            <p>Working through Zig's fundamentals.</p>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div>© <span id="year">2026</span> Maxwell McCormick</div>
+      <div><a href="/">Home</a> · <a href="/posts/">Blog</a> · <a href="https://github.com/NotMaxwell" target="_blank" rel="noreferrer">GitHub</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
