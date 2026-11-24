@@ -25,6 +25,16 @@ python3 convert.py --watch  # Auto-rebuild on save
 Requires `pandoc` on `PATH` (`brew install pandoc`, or `choco install pandoc` on
 Windows). See [posts/WORKFLOW.md](posts/WORKFLOW.md) for the post-writing flow.
 
+### Rebuild the resume
+
+`assets/resume.md` is the source of truth; the `.docx` the site links is generated:
+
+```bash
+pandoc assets/resume.md -o assets/resume.docx --standalone
+```
+
+Edit the markdown, regenerate, and commit both.
+
 ## File structure
 
 ```
@@ -38,7 +48,8 @@ Windows). See [posts/WORKFLOW.md](posts/WORKFLOW.md) for the post-writing flow.
 ├─ .nojekyll            ← Disables Jekyll
 ├─ assets/
 │  ├─ favicon.svg
-│  ├─ resume.docx
+│  ├─ resume.md         ← Resume source
+│  ├─ resume.docx       ← Generated from resume.md by pandoc
 │  └─ css/site.css      ← Shared theme; every page links this
 └─ posts/
    ├─ index.html        ← Blog listing (generated between the POSTS markers)
@@ -57,6 +68,7 @@ Windows). See [posts/WORKFLOW.md](posts/WORKFLOW.md) for the post-writing flow.
   body of each generated post. Edit the markdown, not the generated HTML.
 - The name shown in generated post titles lives in one place: `SITE_AUTHOR` in
   `convert.py`, which must match `posts/template.html`.
+- **`assets/resume.docx` is generated.** Edit `assets/resume.md`, never the `.docx`.
 
 ## Deployment
 
