@@ -10,7 +10,11 @@ on:
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# deploy-pages reads the uploaded artifact through the Actions API, so the job
+# needs actions: read. Without it the deploy step reports "Found 0 artifact(s)"
+# even though the upload step succeeded.
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
